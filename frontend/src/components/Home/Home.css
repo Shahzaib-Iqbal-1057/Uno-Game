@@ -1,0 +1,22 @@
+.sampleHomePage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgb(17, 82, 34)
+
+}
+
+.sampleMessage{
+    top:25%;
+    position: absolute;
+    left: 38%;
+}
+.sampleTitle{
+    position: absolute;
+    left:45%;
+    font-size:45px;
+    color: white;
+
+}

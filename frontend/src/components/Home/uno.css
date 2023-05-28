@@ -1,0 +1,303 @@
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+.main-container {
+    background-color: #ffe6cc;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .messages-and-cards-container {
+    background-color: #eaeaea;
+    border-left: 3px solid #333333;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  
+.right-side-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.message-box {
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    /* overflow-y: auto; */
+    /* overflow-x: hidden; */
+}
+
+.message-content-container {
+    /* border: 1px solid #36454F; */
+    /* display: flex; */
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    height: fit-content;
+    margin-top: 10px;
+}
+
+.my-cards-container {
+    height: 60%;
+}
+
+.my-cards-inner-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading-container {
+    height: 100px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.game-table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-table {
+    width: 1000px;
+    height: 500px;
+    background-color: #4aad4a;
+    border-radius: 150px;
+    position: relative;
+    border: 15px solid #a95555;
+}
+
+.game-table .card-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #63c763;
+    height: 300px;
+    width: 615px;
+    position: absolute;
+    border-radius: 10px;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    box-sizing: border-box;
+}
+
+.game-table::before {
+    content: '';
+    border: 7px solid rgba(0, 0, 0, 0.1);
+    display: block;
+    width: 1015px;
+    height: 515px;
+    border-radius: 150px;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+}
+
+.game-table::after {
+    content: '';
+    border: 7px solid rgba(0, 0, 0, 0.1);
+    display: block;
+    width: 985px;
+    height: 486px;
+    border-radius: 130px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.game-players-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+} 
+
+.player-tag {
+    text-align: center;
+    width: 100px;
+    color: #96e296;
+    padding: 5px 0;
+    margin-left: 10px;
+    box-sizing: border-box;
+    border: 2px solid #96e296;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-overflow: ellipsis;
+    font-size: 11px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-area-rows {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.select-rang-container {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-select-rang {
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 4px;
+    border: 1px solid grey;
+    background: transparent;
+    color: #36454F;
+}
+
+.button-select-rang:hover {
+    background: lightgray;
+}
+
+.button-select-rang:active {
+    background: darkgray;
+}
+
+.output-row-one {
+    justify-content: center;
+}
+
+.output-row-two {
+    justify-content: space-between;
+}
+
+.output-row-three {
+    justify-content: center;
+}
+
+.player-one {
+    left: 44%;
+    top: 84%;
+}
+
+.player-two {
+    top: 44%;
+    rotate: 270deg;
+}
+
+.player-three {
+    left: 44%;
+}
+
+.player-four {
+    top: 44%;
+    left: 89%;
+    rotate: 90deg;
+}
+
+.name {
+    width: 200px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #000000;
+    padding: 10px 10px 10px 10px;
+    margin-left: 30%;
+    margin-top: 1%;
+    border: 1px solid #cccccc;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+.glowing {
+    box-shadow: 0 0 5px rgba(108, 101, 101, 0.5), 0 0 10px rgba(114, 109, 109, 0.5), 0 0 20px #fff, 0 0 40px #2b2b2b, 0 0 80px #4d4d4d;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Ensure the overlay appears on top of other elements */
+  backdrop-filter: blur(5px); /* Apply a blur effect to the background */
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.messages-and-cards-container {
+display: flex;
+justify-content: space-between;
+}
+
+
+.messages-container {
+padding: 20px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.message-box {
+display: flex;
+flex-direction: column;
+height: 30%;
+}
+
+.message-content-container {
+border: none;
+border-radius: 4px;
+background-color: #ffffff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+flex-grow: 1;
+}
+
+.message {
+/* padding: 75px; */
+background-color: #eaf6ff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+  
+.button-select-rang {
+    background-color: #c16c0a;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-select-rang:hover {
+    background-color: #ff9800;
+  }
+  
+  .button-select-rang:active {
+    background-color: #e64a19;
+  }
+  
