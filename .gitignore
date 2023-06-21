@@ -1,0 +1,16 @@
+node_modules/@jridgewell/trace-mapping/node_modules/@jridgewell/sourcemap-codec/LICENSE
+node_modules/@jridgewell/trace-mapping/node_modules/@jridgewell/sourcemap-codec/README.md
+node_modules/@jridgewell/trace-mapping/node_modules/@jridgewell/sourcemap-codec/dist/sourcemap-codec.mjs
+node_modules/@jridgewell/trace-mapping/node_modules/@jridgewell/sourcemap-codec/dist/sourcemap-codec.mjs.map
+node_modules/@jridgewell/trace-mapping/node_modules/@jridgewell/sourcemap-codec/dist/sourcemap-codec.umd.js
+node_modules/@jridgewell/trace-mapping/node_modules/@jridgewell/sourcemap-codec/dist/sourcemap-codec.umd.js.map
+node_modules/@jridgewell/trace-mapping/node_modules/@jridgewell/sourcemap-codec/dist/types/sourcemap-codec.d.ts
+node_modules/@jridgewell/trace-mapping/node_modules/@jridgewell/sourcemap-codec/package.json
+node_modules/@jridgewell/trace-mapping/node_modules/@jridgewell/sourcemap-codec/src/sourcemap-codec.ts
+node_modules/resolve/test/resolver/symlinked/_/node_modules/foo.js
+node_modules/resolve/test/shadowed_core/node_modules/util/index.js
+node_modules/tailwindcss/node_modules/glob-parent/LICENSE
+node_modules/tailwindcss/node_modules/glob-parent/README.md
+node_modules/tailwindcss/node_modules/glob-parent/index.js
+node_modules/tailwindcss/node_modules/glob-parent/package.json
+node_modules/yaml/browser/dist/node_modules/tslib/tslib.es6.js

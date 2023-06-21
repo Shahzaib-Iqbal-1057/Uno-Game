@@ -1,10 +1,9 @@
-import React from 'react';
-import HomePage from './components/Home/Home';
+import HomePage from './components/Home';
 import Username from './components/username';
 import Wait from './components/wait';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './App.css';
-import {io} from "socket.io-client"
+import {io} from "socket.io-client";
+import "./index.css"
 const socket = io('http://localhost:3001',{ transports: ["websocket"] });
 socket.connect()
 
@@ -18,7 +17,6 @@ function App() {
           <Route path="/homepage" element={<HomePage socket={socket} />} />
         </Routes>
       </Router>
-
     </div>
   );
 }

@@ -2,14 +2,14 @@ import { Socket } from "socket.io-client";
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import uno from './resources/uno.png';
+const uno = require("./resources/uno.png");
 
 interface HomePageProps {
   socket: Socket<DefaultEventsMap, DefaultEventsMap>;
 }
 
 const Username = ({ socket }: HomePageProps) => {
-  const [user, setuser] = React.useState("");
+  const [user, setuser] = React.useState<string>("");
   const navigate = useNavigate();
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -22,56 +22,29 @@ const Username = ({ socket }: HomePageProps) => {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        marginTop: "25px",
-      }}
-    >
+    <div className="flex flex-col items-center mt-6">
       <img
         src={uno}
-        alt="Uno"
-        style={{
-          filter: "brightness(1)",
-          width: "15%",
-          margin: "2.5% 34%",
-        }}
+        alt="Uno logo"
+        className="brightness-100 w-1/6 m-10"
       />
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div className="flex flex-col">
         <input
           placeholder="Enter Username"
           value={user}
           onChange={handleChange}
-          style={{
-            padding: "10px",
-            border: "1px solid grey",
-            borderRadius: "5px",
-            fontSize: "16px",
-            width: "300px",
-            marginBottom: "10px",
-          }}
+          className="px-4 py-2 rounded-md text-black text-lg w-72 mb-4 border-none focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
         />
         <button
-          onClick={handleClick}
-          style={{
-            backgroundColor: "blue",
-            color: "white",
-            padding: "10px 10px",
-            borderRadius: "5px",
-            fontSize: "15px",
-            cursor: "pointer",
-            border: "none",
-            width: "150px",
-            margin : "auto"
-          }}
-        >
-          Join Game!
-        </button>
+        onClick={handleClick}
+        className="bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-md text-lg cursor-pointer w-36 mx-auto"
+      >
+        Join Game!
+      </button>
       </div>
     </div>
   );
+  
 }
 
 export default Username;
