@@ -1,13 +1,21 @@
+import { io, Socket } from "socket.io-client" 
+import { DefaultEventsMap } from "socket.io/dist/typed-events"
+import { useNavigate } from "react-router-dom";
+
+
 interface Winner {
-    name : string,
-    winner : string,
-    onButtonClick : React.MouseEventHandler<HTMLDivElement>
+  name : string,
+  winner : string,
+  onButtonClick : React.MouseEventHandler<HTMLDivElement>
+  socket: Socket<DefaultEventsMap, DefaultEventsMap>
 }
 
 function GameOverlay(props : Winner) {
+
+  const navigate = useNavigate();
   return (
-    <div className="overlay">
-  <div className="modal text-black bg-red-600 text-2xl font-bold relative">
+  <div className="overlay">
+    <div className="modal text-black bg-red-600 text-2xl font-bold relative">
     {props.name === props.winner ? (
       <h2>You won the Game!</h2>
     ) : (
@@ -29,6 +37,12 @@ function GameOverlay(props : Winner) {
         />
       </svg>
     </div>
+    <button
+        onClick={()=>{props.socket.emit("username",props.name);navigate("/wait")}}
+        className="bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-md text-lg cursor-pointer w-25 mx-auto"
+      >
+        Play again
+      </button>
   </div>
 </div>
 

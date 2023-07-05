@@ -41,7 +41,7 @@ const HomePage = ({socket} : HomePageProps) => {
             <div className = "main-container">
                 <GameContainer socket={socket} player_names = {player_names}/>
                 <MessagesCardsContainer socket={socket} player_names = {player_names}/>
-                {winner !== "" && <GameOverlay name={player_names.my_name} winner = {winner} onButtonClick = {()=>showWinner("")}/>}
+                {winner !== "" && <GameOverlay name={player_names.my_name} winner = {winner} onButtonClick = {()=>showWinner("")} socket = {socket}/>}
             </div>
         </>
     )
