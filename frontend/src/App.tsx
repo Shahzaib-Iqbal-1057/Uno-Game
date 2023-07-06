@@ -4,7 +4,7 @@ import Wait from './components/wait';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {io} from "socket.io-client";
 import "./index.css"
-const socket = io('http://localhost:3001',{ transports: ["websocket"] });
+const socket = io('https://defective-fire-production-97f4.up.railway.app',{ transports: ["websocket"] });
 socket.connect()
 
 function App() {
