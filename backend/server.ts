@@ -49,6 +49,13 @@ io.on("connection",(socket : any)=>{
             games[games.length-1].homePage();
             setTimeout(()=>{games[games.length-1].sendData()},500);
         }
+        else
+        {
+            for(let i =0 ; i < queue.length;i++)
+            {
+                io.to(queue[i].id).emit("num_players",queue.length);
+            }
+        }
     })
     socket.on("message",(message : string)=>{
         for(let i = 0; i < games.length; i++)

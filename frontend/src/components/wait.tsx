@@ -10,9 +10,14 @@ interface HomePageProps {
 
 const Wait = ({socket} : HomePageProps) => {
     const navigate = useNavigate();
+    const [num_players,setNumPlayers] = React.useState(1);
+
     React.useEffect(()=>{
         socket.on("homepage",()=>{
             navigate("/homepage")
+        })
+        socket.on("num_players",(numplayers : number)=>{
+            setNumPlayers(numplayers);
         })
         return(()=>{
             socket.off("homepage");
@@ -26,7 +31,7 @@ const Wait = ({socket} : HomePageProps) => {
         alt="Uno logo"
         className="brightness-100 w-1/6 m-10"
       />
-      <h3 className="text-white text-2xl mb-8">Please wait while others join...</h3>
+      <h3 className="text-white text-2xl mb-8">Please wait while others join...{num_players}/4</h3>
         <div className="flex items-center justify-center">
         <div className="w-[50%]  flex-center h-10">
             <div
