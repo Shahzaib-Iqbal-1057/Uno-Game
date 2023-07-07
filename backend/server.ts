@@ -20,16 +20,19 @@ interface Card {
 const server = http.createServer(app)
 const io = new Server(
     server,{cors:{
-        origin:"http://localhost:3001",
+        origin:"https://uno-game-production.up.railway.app/",
         methods: ["GET", "POST"]
     },
 })
 let queue : User[] = [];
 let games : Game[] = [];
 
-server.listen(3001, ()=>{
+server.listen("https://uno-game-production.up.railway.app/", ()=>{
     console.log("SERVER IS LISTENING ON PORT 3001")
 })
+app.get("/", (req : any, res : any) => {
+    res.json({ message: "Hello from server!" });
+  });
 io.on("connection",(socket : any)=>{
     console.log("User joined with ID : ", socket.id);
     socket.on("username",(data:string)=>{
