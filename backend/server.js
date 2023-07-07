@@ -10,13 +10,13 @@ var game_1 = require("./game");
 app.use(cors());
 var server = http.createServer(app);
 var io = new Server(server, { cors: {
-        origin: "https://uno-game-production.up.railway.app/",
+        origin: 3001,
         methods: ["GET", "POST"]
     }
 });
 var queue = [];
 var games = [];
-server.listen("https://uno-game-production.up.railway.app/", function () {
+server.listen(3001, function () {
     console.log("SERVER IS LISTENING ON PORT 3001");
 });
 app.get("/", function (req, res) {
