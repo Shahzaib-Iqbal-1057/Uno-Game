@@ -20,6 +20,7 @@ interface Card {
 const server = http.createServer(app)
 const io = new Server(
     server,{cors:{
+        origin:3001,
         methods: ["GET", "POST"]
     },
 })
@@ -32,7 +33,6 @@ server.listen(3001, ()=>{
 app.get("/", (req : any, res : any) => {
     res.json({ message: "Hello from server!" });
   });
-
 io.on("connection",(socket : any)=>{
     console.log("User joined with ID : ", socket.id);
     socket.on("username",(data:string)=>{
