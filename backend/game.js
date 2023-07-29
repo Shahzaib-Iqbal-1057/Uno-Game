@@ -1,7 +1,7 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var Game = /** @class */ (function () {
-    function Game(players, io) {
+    function Game(players, io, num_players) {
         var _this = this;
         this.users = [];
         this.deck_card = { name: "", value: 0, color: "" };
@@ -10,6 +10,7 @@ var Game = /** @class */ (function () {
         this.uno_reverse_flag = false;
         this.room_number = 0;
         this.io = undefined;
+        this.num_players = 0;
         this.deck = [{ name: 'card num-1 red', value: 1, color: "red" }, { name: 'card num-2 red', value: 2, color: "red" },
             { name: 'card num-3 red', value: 3, color: "red" }, { name: 'card num-5 red', value: 5, color: "red" }, { name: 'card num-6 red', value: 6, color: "red" },
             { name: 'card num-7 red', value: 7, color: "red" }, { name: 'card num-8 red', value: 8, color: "red" }, { name: 'card num-9 red', value: 9, color: "red" },
@@ -44,7 +45,7 @@ var Game = /** @class */ (function () {
             { name: 'card draw-4 yellow', value: 4, color: "yellow" }, { name: 'card wild', value: 0, color: "wild" }, { name: 'card wild', value: 0, color: "wild" },
             { name: 'card wild', value: 0, color: "wild" }, { name: 'card wild', value: 0, color: "wild" }];
         this.checkUser = function (id) {
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < _this.num_players; i++) {
                 if (_this.users[i].id === id) {
                     return true;
                 }
@@ -52,12 +53,12 @@ var Game = /** @class */ (function () {
             return false;
         };
         this.sendMessage = function (message) {
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < _this.num_players; i++) {
                 _this.io.to(_this.users[i].id).emit("message", message);
             }
         };
         this.homePage = function () {
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < _this.num_players; i++) {
                 _this.io.to(_this.users[i].id).emit("homepage");
             }
         };
@@ -71,36 +72,48 @@ var Game = /** @class */ (function () {
                     cards.push(_this.deck[random_1]);
                     _this.deck.splice(random_1, 1);
                 }
-                if (i === 1) {
-                    var _c = [all_names[2], all_names[3]], third_element = _c[0], fourth_element = _c[1];
-                    _a = [fourth_element, third_element], all_names[2] = _a[0], all_names[3] = _a[1];
+                if (_this.num_players === 4) {
+                    if (i === 1) {
+                        var _c = [all_names[2], all_names[3]], third_element = _c[0], fourth_element = _c[1];
+                        _a = [fourth_element, third_element], all_names[2] = _a[0], all_names[3] = _a[1];
+                    }
+                    if (i === 2) {
+                        var _d = [all_names[0], all_names[1]], first_element = _d[0], second_element = _d[1];
+                        _b = [second_element, first_element], all_names[0] = _b[0], all_names[1] = _b[1];
+                    }
                 }
-                if (i === 2) {
-                    var _d = [all_names[0], all_names[1]], first_element = _d[0], second_element = _d[1];
-                    _b = [second_element, first_element], all_names[0] = _b[0], all_names[1] = _b[1];
+                if (_this.num_players === 3) {
+                    all_names[3] = "";
+                }
+                if (_this.num_players === 2) {
+                    if (i === 0) {
+                        all_names[2] = all_names[1];
+                        all_names[1] = "";
+                    }
+                    if (i === 1) {
+                        all_names[1] = all_names[0];
+                        all_names[0] = "";
+                    }
+                    all_names[3] = "";
                 }
                 _this.user_cards.push({ id: _this.users[i].id, cards: cards });
                 _this.io.to(_this.users[i].id).emit("player_names", { my_name: _this.users[i].name, other_player_names: all_names.filter(function (x) { return x !== _this.users[i].name; }) });
                 _this.io.to(_this.users[i].id).emit("cards", cards);
             };
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < _this.num_players; i++) {
                 _loop_1(i);
             }
             var random = Math.floor(Math.random() * _this.deck.length);
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < _this.num_players; i++) {
                 _this.io.to(_this.users[i].id).emit("deck_card", _this.deck[random]);
             }
             _this.deck_card = _this.deck[random];
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < _this.num_players; i++) {
                 _this.io.to(_this.users[i].id).emit("turn", _this.users[_this.turn].name);
             }
             _this.deck.splice(random, 1);
         };
         this.cardCompatibility = function (card) {
-            console.log(card.name.split(' ')[1].split('-')[0]);
-            console.log(_this.deck_card.name.split(' ')[1].split('-')[0]);
-            console.log("card value : ", card.value);
-            console.log("deck card value : ", _this.deck_card.value);
             if (_this.deck_card.color === "wild" || card.color === "wild") {
                 return true;
             }
@@ -114,20 +127,26 @@ var Game = /** @class */ (function () {
         };
         this.giveDrawCards = function (index, value) {
             if (_this.uno_reverse_flag) {
-                if (index === 0) {
+                if (index === 0 && _this.num_players === 4) {
                     index = 3;
+                }
+                else if (index === 0 && _this.num_players === 3) {
+                    index = 2;
+                }
+                else if (index === 0 && _this.num_players === 2) {
+                    index = 1;
                 }
                 else {
                     index--;
                 }
                 _this.user_cards = _this.user_cards.map(function (x) {
-                    if (x.id === _this.users[(index) % 4].id) {
+                    if (x.id === _this.users[(index) % _this.num_players].id) {
                         for (var i = 0; i < value; i++) {
                             var random = Math.floor(Math.random() * _this.deck.length);
                             x.cards.push(_this.deck[random]);
                             _this.deck.splice(random, 1);
                         }
-                        _this.io.to(_this.users[(index) % 4].id).emit("cards", x.cards);
+                        _this.io.to(_this.users[(index) % _this.num_players].id).emit("cards", x.cards);
                         return x;
                     }
                     else {
@@ -137,13 +156,13 @@ var Game = /** @class */ (function () {
             }
             else {
                 _this.user_cards = _this.user_cards.map(function (x) {
-                    if (x.id === _this.users[(index + 1) % 4].id) {
+                    if (x.id === _this.users[(index + 1) % _this.num_players].id) {
                         for (var i = 0; i < value; i++) {
                             var random = Math.floor(Math.random() * _this.deck.length);
                             x.cards.push(_this.deck[random]);
                             _this.deck.splice(random, 1);
                         }
-                        _this.io.to(_this.users[(index + 1) % 4].id).emit("cards", x.cards);
+                        _this.io.to(_this.users[(index + 1) % _this.num_players].id).emit("cards", x.cards);
                         return x;
                     }
                     else {
@@ -158,8 +177,14 @@ var Game = /** @class */ (function () {
             }
             if (_this.uno_reverse_flag) {
                 if (card.name.split(' ')[1].split('-')[0] === "num") {
-                    if (_this.turn - 1 < 0) {
+                    if (_this.turn - 1 < 0 && _this.num_players === 4) {
                         return 3;
+                    }
+                    else if (_this.turn - 1 < 0 && _this.num_players === 3) {
+                        return 2;
+                    }
+                    else if (_this.turn - 1 < 0 && _this.num_players === 2) {
+                        return 1;
                     }
                     else {
                         return _this.turn - 1;
@@ -171,11 +196,29 @@ var Game = /** @class */ (function () {
                 }
                 if (card.name.split(' ')[1] === "skip" || card.name.split(' ')[1].split('-')[0] === "draw") {
                     _this.turn = _this.turn - 2;
-                    if (_this.turn === -1) {
-                        return 3;
+                    if (_this.num_players === 4) {
+                        if (_this.turn === -1) {
+                            return 3;
+                        }
+                        if (_this.turn === -2) {
+                            return 2;
+                        }
                     }
-                    if (_this.turn === -2) {
-                        return 2;
+                    if (_this.num_players === 3) {
+                        if (_this.turn === -1) {
+                            return 2;
+                        }
+                        if (_this.turn === -2) {
+                            return 1;
+                        }
+                    }
+                    if (_this.num_players === 2) {
+                        if (_this.turn === -1) {
+                            return 1;
+                        }
+                        if (_this.turn === -2) {
+                            return 0;
+                        }
                     }
                     return _this.turn;
                 }
@@ -188,8 +231,14 @@ var Game = /** @class */ (function () {
                     return _this.turn + 2;
                 }
                 if (card.name.split(' ')[1] === "reverse") {
-                    if (_this.turn - 1 < 0) {
+                    if (_this.turn - 1 < 0 && _this.num_players === 4) {
                         _this.turn = 3;
+                    }
+                    else if (_this.turn - 1 < 0 && _this.num_players === 3) {
+                        _this.turn = 2;
+                    }
+                    else if (_this.turn - 1 < 0 && _this.num_players === 2) {
+                        _this.turn = 1;
                     }
                     else {
                         _this.turn--;
@@ -201,11 +250,11 @@ var Game = /** @class */ (function () {
             return _this.turn;
         };
         this.putCardOnDeck = function (card, id) {
-            if (_this.users[_this.turn % 4].id !== id) {
+            if (_this.users[_this.turn % _this.num_players].id !== id) {
                 return;
             }
             if (_this.cardCompatibility(card)) {
-                for (var i = 0; i < 4; i++) {
+                for (var i = 0; i < _this.num_players; i++) {
                     _this.io.to(_this.users[i].id).emit("deck_card", card);
                 }
                 _this.deck_card = card;
@@ -227,25 +276,27 @@ var Game = /** @class */ (function () {
                 if (card.name.split(' ')[1].split('-')[0] === "draw") {
                     _this.giveDrawCards(_this.turn, card.value);
                 }
-                if (_this.user_cards[_this.turn % 4].cards.length === 0) {
-                    for (var i = 0; i < 4; i++) {
-                        _this.io.to(_this.users[i].id).emit("winner", _this.users[_this.turn % 4].name);
+                if (_this.user_cards[_this.turn % _this.num_players].cards.length === 0) {
+                    for (var i = 0; i < _this.num_players; i++) {
+                        _this.io.to(_this.users[i].id).emit("winner", _this.users[_this.turn % _this.num_players].name);
                     }
+                    return true;
                 }
-                if (_this.user_cards[_this.turn % 4].cards.length === 1) {
-                    for (var i = 0; i < 4; i++) {
-                        _this.io.to(_this.users[i].id).emit("message", { message: "Uno!", name: _this.users[_this.turn % 4].name });
+                if (_this.user_cards[_this.turn % _this.num_players].cards.length === 1) {
+                    for (var i = 0; i < _this.num_players; i++) {
+                        _this.io.to(_this.users[i].id).emit("message", { message: "Uno!", name: _this.users[_this.turn % _this.num_players].name });
                     }
                 }
                 _this.turn = _this.calculateNextTurn(card);
-                _this.io.emit("turn", _this.users[_this.turn % 4].name);
-                for (var i = 0; i < 4; i++) {
-                    _this.io.to(_this.users[i].id).emit("turn", _this.users[_this.turn % 4].name);
+                _this.io.emit("turn", _this.users[_this.turn % _this.num_players].name);
+                for (var i = 0; i < _this.num_players; i++) {
+                    _this.io.to(_this.users[i].id).emit("turn", _this.users[_this.turn % _this.num_players].name);
                 }
             }
+            return false;
         };
         this.getCardFromDeck = function (id) {
-            if (_this.users[_this.turn % 4].id !== id) {
+            if (_this.users[_this.turn % _this.num_players].id !== id) {
                 return;
             }
             _this.user_cards = _this.user_cards.map(function (x) {
@@ -265,19 +316,26 @@ var Game = /** @class */ (function () {
             }
             else {
                 _this.turn--;
-                if (_this.turn < 0) {
+                if (_this.turn < 0 && _this.num_players === 4) {
                     _this.turn = 3;
                 }
+                if (_this.turn < 0 && _this.num_players === 3) {
+                    _this.turn = 2;
+                }
+                if (_this.turn < 0 && _this.num_players === 2) {
+                    _this.turn = 1;
+                }
             }
-            for (var i = 0; i < 4; i++) {
-                _this.io.to(_this.users[i].id).emit("turn", _this.users[_this.turn % 4].name);
+            for (var i = 0; i < _this.num_players; i++) {
+                _this.io.to(_this.users[i].id).emit("turn", _this.users[_this.turn % _this.num_players].name);
             }
         };
         this.io = io;
         players.map(function (player) {
             _this.users.push(player);
         });
+        this.num_players = num_players;
     }
     return Game;
 }());
-exports["default"] = Game;
+exports.default = Game;

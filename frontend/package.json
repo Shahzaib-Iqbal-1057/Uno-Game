@@ -12,6 +12,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/socket.io-client": "^3.0.0",
+    "next": "^13.4.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev" : "next dev"
   },
   "eslintConfig": {
     "extends": [

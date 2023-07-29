@@ -21,6 +21,7 @@ export default class Game {
     uno_reverse_flag = false as boolean;
     room_number = 0 as number;
     io = undefined as any;
+    num_players = 0 as any;
     deck = [{ name: 'card num-1 red', value: 1, color : "red" }, { name: 'card num-2 red', value: 2, color : "red" }, 
     { name: 'card num-3 red', value: 3, color : "red" },{ name: 'card num-5 red', value: 5,color : "red" }, { name: 'card num-6 red', value: 6, color : "red" },
     { name: 'card num-7 red', value: 7,color : "red" },{ name: 'card num-8 red', value: 8,color : "red" },  { name: 'card num-9 red', value: 9,color : "red" },
@@ -55,17 +56,17 @@ export default class Game {
     { name: 'card draw-4 yellow', value: 4,color : "yellow" }, { name: 'card wild', value: 0,color : "wild" },{ name: 'card wild', value: 0,color : "wild" },
     { name: 'card wild', value: 0,color : "wild" }, { name: 'card wild', value: 0,color : "wild" }] as Card[];
     
-    constructor(players : User[],io:any)
+    constructor(players : User[],io:any,num_players : number)
     {
         this.io = io;
         players.map(player => {
             this.users.push(player);
         });
+        this.num_players = num_players;
     }
 
-
     checkUser = (id : string) : boolean => {
-        for(let i = 0; i < 4; i++)
+        for(let i = 0; i < this.num_players; i++)
         {
             if(this.users[i].id === id)
             {
@@ -76,7 +77,7 @@ export default class Game {
     }
 
     sendMessage = (message : string) => {
-        for(let i = 0; i < 4; i++)
+        for(let i = 0; i < this.num_players; i++)
         {
             this.io.to(this.users[i].id).emit("message",message);
         }
@@ -84,14 +85,15 @@ export default class Game {
 
 
     homePage = () => {
-        for(let i =0; i < 4; i++)
+        for(let i = 0; i < this.num_players; i++)
         {
             this.io.to(this.users[i].id).emit("homepage");
         }
     }
     sendData = () => {
-        for(let i = 0; i < 4; i++)
+        for(let i = 0; i < this.num_players; i++)
         {
+
             let all_names : string[] = this.users.map(x=>x.name);
             let cards : Card[] = [];
             for(let i = 0; i < 8; i++)
@@ -100,27 +102,49 @@ export default class Game {
                 cards.push(this.deck[random]);
                 this.deck.splice(random,1);
             }
-            if(i === 1)
+            if(this.num_players === 4)
             {
-                const [third_element,fourth_element] : string[] = [all_names[2],all_names[3]];
-                [all_names[2],all_names[3]] = [fourth_element,third_element];
+                if(i === 1)
+                {
+                    const [third_element,fourth_element] : string[] = [all_names[2],all_names[3]];
+                    [all_names[2],all_names[3]] = [fourth_element,third_element];
+                }
+                if(i === 2)
+                {
+                    const [first_element,second_element] : string[] = [all_names[0],all_names[1]];
+                    [all_names[0],all_names[1]] = [second_element,first_element];
+                }
             }
-            if(i === 2)
+            if(this.num_players === 3)
             {
-                const [first_element,second_element] : string[] = [all_names[0],all_names[1]];
-                [all_names[0],all_names[1]] = [second_element,first_element];
+                all_names[3] = "";
+            }
+            if(this.num_players === 2)
+            {
+                if(i === 0)
+                {
+                    all_names[2] = all_names[1];
+                    all_names[1] = "";
+                }
+                if(i === 1)
+                {
+                    all_names[1] = all_names[0];
+                    all_names[0] = "";
+                }
+                all_names[3] = "";
             }
             this.user_cards.push({id : this.users[i].id,cards : cards})
             this.io.to(this.users[i].id).emit("player_names",{my_name : this.users[i].name,other_player_names : all_names.filter(x => x !== this.users[i].name)});
             this.io.to(this.users[i].id).emit("cards",cards);
         }
+
         let random : number = Math.floor(Math.random() * this.deck.length);
-        for(let i = 0; i < 4; i++)
+        for(let i = 0; i < this.num_players; i++)
         {
             this.io.to(this.users[i].id).emit("deck_card",this.deck[random]);
         }
         this.deck_card = this.deck[random];
-        for(let i = 0; i < 4; i++)
+        for(let i = 0; i < this.num_players; i++)
         {
             this.io.to(this.users[i].id).emit("turn",this.users[this.turn].name);
         }
@@ -129,10 +153,7 @@ export default class Game {
 
 
     cardCompatibility = (card : Card) : boolean => {
-        console.log(card.name.split(' ')[1].split('-')[0]);
-        console.log(this.deck_card.name.split(' ')[1].split('-')[0]);
-        console.log("card value : ",card.value);
-        console.log("deck card value : ",this.deck_card.value);
+
         if(this.deck_card.color === "wild" || card.color === "wild")
         {
             return true;
@@ -152,16 +173,24 @@ export default class Game {
     giveDrawCards = (index : number,value : number) => {
         if(this.uno_reverse_flag)
         {
-            if(index === 0)
+            if(index === 0 && this.num_players === 4)
             {
                 index = 3;
+            }
+            else if(index === 0 && this.num_players === 3)
+            {
+                index = 2;
+            }
+            else if(index === 0 && this.num_players === 2)
+            {
+                index = 1;
             }
             else
             {
                 index--;
             }
             this.user_cards = this.user_cards.map(x=>{
-                if(x.id === this.users[(index)%4].id)
+                if(x.id === this.users[(index)%this.num_players].id)
                 {
                     for(let i =0; i < value; i++)
                     {
@@ -169,7 +198,7 @@ export default class Game {
                         x.cards.push(this.deck[random]);
                         this.deck.splice(random,1);
                     }
-                    this.io.to(this.users[(index)%4].id).emit("cards",x.cards);
+                    this.io.to(this.users[(index)%this.num_players].id).emit("cards",x.cards);
                     return x;
                 }
                 else
@@ -181,7 +210,7 @@ export default class Game {
         else
         {
             this.user_cards = this.user_cards.map(x=>{
-                if(x.id === this.users[(index+1)%4].id)
+                if(x.id === this.users[(index+1)%this.num_players].id)
                 {
                     for(let i = 0; i < value; i++)
                     {
@@ -189,7 +218,7 @@ export default class Game {
                         x.cards.push(this.deck[random]);
                         this.deck.splice(random,1);
                     }
-                    this.io.to(this.users[(index+1)%4].id).emit("cards",x.cards);
+                    this.io.to(this.users[(index+1)%this.num_players].id).emit("cards",x.cards);
                     return x;
                 }
                 else
@@ -199,6 +228,12 @@ export default class Game {
             })        
         }
     }
+
+
+
+
+
+
 
     calculateNextTurn = (card : Card) : number => {
         if(card.color === "wild")
@@ -210,9 +245,17 @@ export default class Game {
         {
             if(card.name.split(' ')[1].split('-')[0]==="num")
             {
-                if(this.turn-1 < 0)
+                if(this.turn-1 < 0 && this.num_players === 4)
                 {
                     return 3;
+                }
+                else if(this.turn-1 < 0 && this.num_players === 3)
+                {
+                    return 2;
+                }
+                else if(this.turn-1 < 0 && this.num_players === 2)
+                {
+                    return 1;
                 }
                 else
                 {
@@ -227,17 +270,43 @@ export default class Game {
             if(card.name.split(' ')[1] === "skip" || card.name.split(' ')[1].split('-')[0]==="draw")
             {
                 this.turn = this.turn-2;
-                if(this.turn === -1)
+                if(this.num_players === 4)
                 {
-                    return 3;
+                    if(this.turn === -1)
+                    {
+                        return 3;
+                    }
+                    if(this.turn === -2)
+                    {
+                        return 2;
+                    }
                 }
-                if(this.turn === -2)
+                if(this.num_players === 3)
                 {
-                    return 2;
+                    if(this.turn === -1)
+                    {
+                        return 2;
+                    }
+                    if(this.turn === -2)
+                    {
+                        return 1;
+                    }
+                }
+                if(this.num_players === 2)
+                {
+                    if(this.turn === -1)
+                    {
+                        return 1;
+                    }
+                    if(this.turn === -2)
+                    {
+                        return 0;
+                    }
                 }
                 return this.turn;
             }
         }
+
         else
         {
             if(card.name.split(' ')[1].split('-')[0]==="num")
@@ -250,9 +319,17 @@ export default class Game {
             }
             if(card.name.split(' ')[1] === "reverse")
             {
-                if(this.turn-1<0)
+                if(this.turn-1<0 && this.num_players === 4)
                 {
                     this.turn = 3;
+                }
+                else if(this.turn-1<0 && this.num_players === 3)
+                {
+                    this.turn = 2;
+                }
+                else if(this.turn-1<0 && this.num_players === 2)
+                {
+                    this.turn = 1;
                 }
                 else
                 {
@@ -264,14 +341,23 @@ export default class Game {
         }
         return this.turn;
     }
+
+
+
+
+
+
+
+
+
     putCardOnDeck = (card : Card,id : string) => {
-        if(this.users[this.turn%4].id !== id)
+        if(this.users[this.turn%this.num_players].id !== id)
         {
             return;
         }
         if(this.cardCompatibility(card))
         {
-            for(let i = 0; i < 4; i++)
+            for(let i = 0; i < this.num_players; i++)
             {
                 this.io.to(this.users[i].id).emit("deck_card",card);
             }
@@ -299,30 +385,39 @@ export default class Game {
             {
                 this.giveDrawCards(this.turn,card.value);
             }
-            if(this.user_cards[this.turn%4].cards.length === 0)
+            if(this.user_cards[this.turn%this.num_players].cards.length === 0)
             {
-                for(let i = 0; i < 4; i++)
+                for(let i = 0; i < this.num_players; i++)
                 {
-                    this.io.to(this.users[i].id).emit("winner",this.users[this.turn%4].name);
+                    this.io.to(this.users[i].id).emit("winner",this.users[this.turn%this.num_players].name);
                 }
+                return true;
             }
-            if(this.user_cards[this.turn%4].cards.length === 1)
+            if(this.user_cards[this.turn%this.num_players].cards.length === 1)
             {
-                for(let i = 0; i < 4; i++)
+                for(let i = 0; i < this.num_players; i++)
                 {
-                    this.io.to(this.users[i].id).emit("message",{message : "Uno!",name : this.users[this.turn%4].name});
+                    this.io.to(this.users[i].id).emit("message",{message : "Uno!",name : this.users[this.turn%this.num_players].name});
                 }
             }
             this.turn = this.calculateNextTurn(card);
-            this.io.emit("turn",this.users[this.turn%4].name);
-            for(let i = 0; i < 4; i++)
+            this.io.emit("turn",this.users[this.turn%this.num_players].name);
+            for(let i = 0; i < this.num_players; i++)
             {
-                this.io.to(this.users[i].id).emit("turn",this.users[this.turn%4].name);
+                this.io.to(this.users[i].id).emit("turn",this.users[this.turn%this.num_players].name);
             }
         }
+        return false;
     }
+
+
+
+
+
+
+
     getCardFromDeck = (id : string) => {
-        if(this.users[this.turn%4].id !== id)
+        if(this.users[this.turn%this.num_players].id !== id)
         {
             return;
         }
@@ -347,14 +442,22 @@ export default class Game {
         else
         {
             this.turn--;
-            if(this.turn<0)
+            if(this.turn<0 && this.num_players === 4)
             {
                 this.turn = 3;
             }
+            if(this.turn<0 && this.num_players === 3)
+            {
+                this.turn = 2;
+            }
+            if(this.turn<0 && this.num_players === 2)
+            {
+                this.turn = 1;
+            }
         }
-        for(let i = 0; i < 4; i++)
+        for(let i = 0; i < this.num_players; i++)
         {
-            this.io.to(this.users[i].id).emit("turn",this.users[this.turn%4].name);
+            this.io.to(this.users[i].id).emit("turn",this.users[this.turn%this.num_players].name);
         }   
     }
 }
