@@ -53,7 +53,7 @@ export default function page () {
   };
 
   return (
-    <div className="flex flex-col items-center mt-6 h-screen  bg-gradient-to-t from-blue-900 ">
+    <div className="uno-image">
       <Image
         src= "/uno.png"
         alt="Uno logo"

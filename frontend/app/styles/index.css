@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
+/* @import "tailwindcss/base";
 @import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss/utilities"; */
 
 
 
@@ -8,4 +8,10 @@
  body {
     background-color: #131313;
     color : white;
+}
+
+
+
+.uno-image {
+    @apply flex flex-col items-center mt-6 h-screen  bg-gradient-to-t from-blue-900;
 }
