@@ -58,34 +58,6 @@
 }.__className_3e9f6d {font-family: '__Poppins_3e9f6d', '__Poppins_Fallback_3e9f6d';font-style: normal
 }
 
-/*!****************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[3]!./app/styles/index.css ***!
-  \****************************************************************************************************************************************************************************************************************************************************************/
-/* @import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities"; */
-
-
-
-
- body {
-    background-color: #131313;
-    color : white;
-}
-
-
-
-.uno-image {
-    margin-top: 1.5rem;
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    background-image: linear-gradient(to top, var(--tw-gradient-stops));
-    --tw-gradient-from: #1e3a8a var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(30 58 138 / 0) var(--tw-gradient-to-position);
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
 /*!********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[3]!./app/styles/uno-cards.css ***!
   \********************************************************************************************************************************************************************************************************************************************************************/
@@ -593,3 +565,31 @@ body {
     text-align: center;
   }
 
+/*!****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[3]!./app/styles/index.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************/
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
+
+
+
+
+.body {
+    background-color: #131313;
+    color : white;
+}
+
+
+
+.uno-image {
+    margin-top: 1.5rem;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(to top, var(--tw-gradient-stops));
+    --tw-gradient-from: #1e3a8a var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(30 58 138 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
