@@ -1,11 +1,11 @@
-/* @import "tailwindcss/base";
+@import "tailwindcss/base";
 @import "tailwindcss/components";
-@import "tailwindcss/utilities"; */
+@import "tailwindcss/utilities";
 
 
 
 
-.body {
+body {
     background-color: #131313;
     color : white;
 }
