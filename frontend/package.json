@@ -24,7 +24,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "install": "npm install",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "jest"
