@@ -116,24 +116,8 @@ io.on("connection",(socket : any)=>{
 
             }
 
-        },350)
+        },450)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     socket.on("message",(message : string)=>{
         for(let i = 0; i < games.length; i++)

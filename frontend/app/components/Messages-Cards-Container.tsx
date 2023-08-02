@@ -3,8 +3,6 @@ import React from "react"
 import { Socket } from "socket.io-client" 
 import { DefaultEventsMap } from "socket.io/dist/typed-events"
 
-
-
 interface HomePageProps {
     socket: Socket<DefaultEventsMap, DefaultEventsMap>,
     player_names : {
@@ -32,7 +30,6 @@ const MessagesCardsContainer = ({socket,player_names} : HomePageProps) =>
     const [cards,setCards] = React.useState<Card[]>([]);
 
 
-
     const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
         setMessage(event.target.value);
     }
@@ -44,7 +41,6 @@ const MessagesCardsContainer = ({socket,player_names} : HomePageProps) =>
         }
     }
     const handleClick = (card : Card) => {
-        console.log(card);
         socket.emit("card_selected",card);
     }
 
@@ -74,7 +70,7 @@ const MessagesCardsContainer = ({socket,player_names} : HomePageProps) =>
     }
 
     React.useEffect(()=>{
-        socket.on("message",(message : PlayerMessage) => {
+        socket.on("message", async (message : PlayerMessage) =>  {
             setMessages(prev_messages=> [message,...prev_messages]);
         })
         socket.on("cards",(data : Card[])=>{
@@ -85,6 +81,9 @@ const MessagesCardsContainer = ({socket,player_names} : HomePageProps) =>
             socket.off("cards");
         }
     },[socket])
+
+
+
 
     return (
         <div className = "messages-and-cards-container">

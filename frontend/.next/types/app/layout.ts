@@ -1,4 +1,4 @@
-// File: /Users/shafiqaiqbal/Downloads/AssignmentThree 4/AssignmentThree/MyGame/frontend/app/layout.tsx
+// File: /Users/shafiqaiqbal/Uno-Game/frontend/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

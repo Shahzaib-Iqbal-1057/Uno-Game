@@ -3,6 +3,8 @@ import "./styles/uno-cards.css";
 import "./styles/uno.css"
 import { Poppins } from 'next/font/google'
 import { Metadata } from "next";
+import 'tailwindcss/tailwind.css'
+
 
 const poppins = Poppins({
   weight : ['400','700'],

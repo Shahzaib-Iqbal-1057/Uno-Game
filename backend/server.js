@@ -84,7 +84,7 @@ io.on("connection", function (socket) {
                     }
                 }
             }
-        }, 350);
+        }, 450);
     });
     socket.on("message", function (message) {
         for (var i = 0; i < games.length; i++) {

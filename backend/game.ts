@@ -341,15 +341,6 @@ export default class Game {
         }
         return this.turn;
     }
-
-
-
-
-
-
-
-
-
     putCardOnDeck = (card : Card,id : string) => {
         if(this.users[this.turn%this.num_players].id !== id)
         {
@@ -409,12 +400,6 @@ export default class Game {
         }
         return false;
     }
-
-
-
-
-
-
 
     getCardFromDeck = (id : string) => {
         if(this.users[this.turn%this.num_players].id !== id)
