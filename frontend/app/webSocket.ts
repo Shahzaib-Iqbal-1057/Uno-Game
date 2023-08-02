@@ -1,4 +1,4 @@
 import {io} from "socket.io-client";
-const socket = io('https://uno-game-vtdp.onrender.com',{ transports: ["websocket"] });
+const socket = io('localhost:3001',{ transports: ["websocket"] });
 socket.connect()
 export default socket;

@@ -109,11 +109,22 @@ io.on("connection", function (socket) {
             }
         }
     });
-    socket.on('disconnect-client', function () {
-        console.log('Client with socket id', socket.id, 'disconnected.');
-        socket.disconnect(true); // true parameter means a close packet will be sent to the client
-    });
     socket.on("disconnet", function () {
+        for (var i = 0; i < two_queue.length; i++) {
+            if (two_queue[i].id === socket.id) {
+                two_queue.splice(i, 1);
+            }
+        }
+        for (var i = 0; i < three_queue.length; i++) {
+            if (three_queue[i].id === socket.id) {
+                three_queue.splice(i, 1);
+            }
+        }
+        for (var i = 0; i < four_queue.length; i++) {
+            if (four_queue[i].id === socket.id) {
+                four_queue.splice(i, 1);
+            }
+        }
         socket.disconnect();
     });
 });

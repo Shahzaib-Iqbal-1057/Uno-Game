@@ -1,32 +1,3 @@
-// import HomePage from './components/Home';
-// import Username from './components/username';
-// import Wait from './components/wait';
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import {io} from "socket.io-client";
-// import "./styles/index.css";
-
-// const socket = io('https://uno-game-vtdp.onrender.com/',{ transports: ["websocket"] });
-// socket.connect()
-
-// function App() {
-//   return (
-//     <div>
-//       <Router>
-      
-//       <Routes>
-//           <Route path = "/" element = {<Username socket = {socket}/>}/>
-//           <Route path = "/wait" element = {<Wait socket = {socket}/>}/>
-//           <Route path="/homepage" element={<HomePage socket={socket} />} />
-//         </Routes>
-//       </Router>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-
 'use client'
 import React from "react";
 import socket from "./webSocket";
@@ -53,7 +24,7 @@ export default function page () {
   };
 
   return (
-    <div className="uno-image">
+    <div className="flex flex-col items-center mt-6 h-screen  bg-gradient-to-t from-blue-900 ">
       <Image
         src= "/uno.png"
         alt="Uno logo"
