@@ -1,4 +1,4 @@
-// File: /Users/shafiqaiqbal/Uno-Game/frontend/app/page.tsx
+// File: /Users/shafiqaiqbal/uno/Uno-Game/frontend/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
