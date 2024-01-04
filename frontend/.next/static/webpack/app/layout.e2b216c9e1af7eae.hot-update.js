@@ -1,0 +1,65 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+self["webpackHotUpdate_N_E"]("app/layout",{
+
+/***/ "(app-pages-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fnode_modules%2Fnext%2Ffont%2Fgoogle%2Ftarget.css%3F%7B%22path%22%3A%22app%2Flayout.tsx%22%2C%22import%22%3A%22Poppins%22%2C%22arguments%22%3A%5B%7B%22weight%22%3A%5B%22400%22%2C%22700%22%5D%2C%22subsets%22%3A%5B%22latin%22%5D%7D%5D%2C%22variableName%22%3A%22poppins%22%7D&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fapp%2Fstyles%2Findex.css&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fapp%2Fstyles%2Funo-cards.css&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fapp%2Fstyles%2Funo.css&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fnode_modules%2Ftailwindcss%2Ftailwind.css&server=false!":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fnode_modules%2Fnext%2Ffont%2Fgoogle%2Ftarget.css%3F%7B%22path%22%3A%22app%2Flayout.tsx%22%2C%22import%22%3A%22Poppins%22%2C%22arguments%22%3A%5B%7B%22weight%22%3A%5B%22400%22%2C%22700%22%5D%2C%22subsets%22%3A%5B%22latin%22%5D%7D%5D%2C%22variableName%22%3A%22poppins%22%7D&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fapp%2Fstyles%2Findex.css&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fapp%2Fstyles%2Funo-cards.css&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fapp%2Fstyles%2Funo.css&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fnode_modules%2Ftailwindcss%2Ftailwind.css&server=false! ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+eval(__webpack_require__.ts("Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! ./node_modules/next/font/google/target.css?{\"path\":\"app/layout.tsx\",\"import\":\"Poppins\",\"arguments\":[{\"weight\":[\"400\",\"700\"],\"subsets\":[\"latin\"]}],\"variableName\":\"poppins\"} */ \"(app-pages-browser)/./node_modules/next/font/google/target.css?{\\\"path\\\":\\\"app/layout.tsx\\\",\\\"import\\\":\\\"Poppins\\\",\\\"arguments\\\":[{\\\"weight\\\":[\\\"400\\\",\\\"700\\\"],\\\"subsets\\\":[\\\"latin\\\"]}],\\\"variableName\\\":\\\"poppins\\\"}\", 23));\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./app/styles/index.css */ \"(app-pages-browser)/./app/styles/index.css\"));\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./app/styles/uno-cards.css */ \"(app-pages-browser)/./app/styles/uno-cards.css\"));\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./app/styles/uno.css */ \"(app-pages-browser)/./app/styles/uno.css\"));\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./node_modules/tailwindcss/tailwind.css */ \"(app-pages-browser)/./node_modules/tailwindcss/tailwind.css\"))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL25vZGVfbW9kdWxlcy9uZXh0L2Rpc3QvYnVpbGQvd2VicGFjay9sb2FkZXJzL25leHQtZmxpZ2h0LWNsaWVudC1lbnRyeS1sb2FkZXIuanM/bW9kdWxlcz0lMkZVc2VycyUyRnNoYWZpcWFpcWJhbCUyRnVubyUyRlVuby1HYW1lJTJGZnJvbnRlbmQlMkZub2RlX21vZHVsZXMlMkZuZXh0JTJGZm9udCUyRmdvb2dsZSUyRnRhcmdldC5jc3MlM0YlN0IlMjJwYXRoJTIyJTNBJTIyYXBwJTJGbGF5b3V0LnRzeCUyMiUyQyUyMmltcG9ydCUyMiUzQSUyMlBvcHBpbnMlMjIlMkMlMjJhcmd1bWVudHMlMjIlM0ElNUIlN0IlMjJ3ZWlnaHQlMjIlM0ElNUIlMjI0MDAlMjIlMkMlMjI3MDAlMjIlNUQlMkMlMjJzdWJzZXRzJTIyJTNBJTVCJTIybGF0aW4lMjIlNUQlN0QlNUQlMkMlMjJ2YXJpYWJsZU5hbWUlMjIlM0ElMjJwb3BwaW5zJTIyJTdEJm1vZHVsZXM9JTJGVXNlcnMlMkZzaGFmaXFhaXFiYWwlMkZ1bm8lMkZVbm8tR2FtZSUyRmZyb250ZW5kJTJGYXBwJTJGc3R5bGVzJTJGaW5kZXguY3NzJm1vZHVsZXM9JTJGVXNlcnMlMkZzaGFmaXFhaXFiYWwlMkZ1bm8lMkZVbm8tR2FtZSUyRmZyb250ZW5kJTJGYXBwJTJGc3R5bGVzJTJGdW5vLWNhcmRzLmNzcyZtb2R1bGVzPSUyRlVzZXJzJTJGc2hhZmlxYWlxYmFsJTJGdW5vJTJGVW5vLUdhbWUlMkZmcm9udGVuZCUyRmFwcCUyRnN0eWxlcyUyRnVuby5jc3MmbW9kdWxlcz0lMkZVc2VycyUyRnNoYWZpcWFpcWJhbCUyRnVubyUyRlVuby1HYW1lJTJGZnJvbnRlbmQlMkZub2RlX21vZHVsZXMlMkZ0YWlsd2luZGNzcyUyRnRhaWx3aW5kLmNzcyZzZXJ2ZXI9ZmFsc2UhIiwibWFwcGluZ3MiOiJBQUFBLDhlQUFnUjtBQUNoUixzS0FBbUc7QUFDbkcsOEtBQXVHO0FBQ3ZHLGtLQUFpRztBQUNqRyIsInNvdXJjZXMiOlsid2VicGFjazovL19OX0UvPzNjYjIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIgKi8gXCIvVXNlcnMvc2hhZmlxYWlxYmFsL3Vuby9Vbm8tR2FtZS9mcm9udGVuZC9ub2RlX21vZHVsZXMvbmV4dC9mb250L2dvb2dsZS90YXJnZXQuY3NzP3tcXFwicGF0aFxcXCI6XFxcImFwcC9sYXlvdXQudHN4XFxcIixcXFwiaW1wb3J0XFxcIjpcXFwiUG9wcGluc1xcXCIsXFxcImFyZ3VtZW50c1xcXCI6W3tcXFwid2VpZ2h0XFxcIjpbXFxcIjQwMFxcXCIsXFxcIjcwMFxcXCJdLFxcXCJzdWJzZXRzXFxcIjpbXFxcImxhdGluXFxcIl19XSxcXFwidmFyaWFibGVOYW1lXFxcIjpcXFwicG9wcGluc1xcXCJ9XCIpO1xuaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIgKi8gXCIvVXNlcnMvc2hhZmlxYWlxYmFsL3Vuby9Vbm8tR2FtZS9mcm9udGVuZC9hcHAvc3R5bGVzL2luZGV4LmNzc1wiKTtcbmltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL1VzZXJzL3NoYWZpcWFpcWJhbC91bm8vVW5vLUdhbWUvZnJvbnRlbmQvYXBwL3N0eWxlcy91bm8tY2FyZHMuY3NzXCIpO1xuaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIgKi8gXCIvVXNlcnMvc2hhZmlxYWlxYmFsL3Vuby9Vbm8tR2FtZS9mcm9udGVuZC9hcHAvc3R5bGVzL3Vuby5jc3NcIik7XG5pbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiAqLyBcIi9Vc2Vycy9zaGFmaXFhaXFiYWwvdW5vL1Vuby1HYW1lL2Zyb250ZW5kL25vZGVfbW9kdWxlcy90YWlsd2luZGNzcy90YWlsd2luZC5jc3NcIikiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(app-pages-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fnode_modules%2Fnext%2Ffont%2Fgoogle%2Ftarget.css%3F%7B%22path%22%3A%22app%2Flayout.tsx%22%2C%22import%22%3A%22Poppins%22%2C%22arguments%22%3A%5B%7B%22weight%22%3A%5B%22400%22%2C%22700%22%5D%2C%22subsets%22%3A%5B%22latin%22%5D%7D%5D%2C%22variableName%22%3A%22poppins%22%7D&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fapp%2Fstyles%2Findex.css&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fapp%2Fstyles%2Funo-cards.css&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fapp%2Fstyles%2Funo.css&modules=%2FUsers%2Fshafiqaiqbal%2Funo%2FUno-Game%2Ffrontend%2Fnode_modules%2Ftailwindcss%2Ftailwind.css&server=false!\n"));
+
+/***/ }),
+
+/***/ "(app-pages-browser)/./app/styles/index.css":
+/*!******************************!*\
+  !*** ./app/styles/index.css ***!
+  \******************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval(__webpack_require__.ts("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"26e1bfd246fe\");\nif (true) { module.hot.accept() }\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL2FwcC9zdHlsZXMvaW5kZXguY3NzIiwibWFwcGluZ3MiOiI7QUFBQSwrREFBZSxjQUFjO0FBQzdCLElBQUksSUFBVSxJQUFJLGlCQUFpQiIsInNvdXJjZXMiOlsid2VicGFjazovL19OX0UvLi9hcHAvc3R5bGVzL2luZGV4LmNzcz9hN2M3Il0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IFwiMjZlMWJmZDI0NmZlXCJcbmlmIChtb2R1bGUuaG90KSB7IG1vZHVsZS5ob3QuYWNjZXB0KCkgfVxuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(app-pages-browser)/./app/styles/index.css\n"));
+
+/***/ }),
+
+/***/ "(app-pages-browser)/./app/styles/uno-cards.css":
+/*!**********************************!*\
+  !*** ./app/styles/uno-cards.css ***!
+  \**********************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval(__webpack_require__.ts("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"4ae7c39ca9b8\");\nif (true) { module.hot.accept() }\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL2FwcC9zdHlsZXMvdW5vLWNhcmRzLmNzcyIsIm1hcHBpbmdzIjoiO0FBQUEsK0RBQWUsY0FBYztBQUM3QixJQUFJLElBQVUsSUFBSSxpQkFBaUIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9fTl9FLy4vYXBwL3N0eWxlcy91bm8tY2FyZHMuY3NzP2RiZjIiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgXCI0YWU3YzM5Y2E5YjhcIlxuaWYgKG1vZHVsZS5ob3QpIHsgbW9kdWxlLmhvdC5hY2NlcHQoKSB9XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(app-pages-browser)/./app/styles/uno-cards.css\n"));
+
+/***/ }),
+
+/***/ "(app-pages-browser)/./app/styles/uno.css":
+/*!****************************!*\
+  !*** ./app/styles/uno.css ***!
+  \****************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval(__webpack_require__.ts("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"6023d366272b\");\nif (true) { module.hot.accept() }\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL2FwcC9zdHlsZXMvdW5vLmNzcyIsIm1hcHBpbmdzIjoiO0FBQUEsK0RBQWUsY0FBYztBQUM3QixJQUFJLElBQVUsSUFBSSxpQkFBaUIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9fTl9FLy4vYXBwL3N0eWxlcy91bm8uY3NzPzYzODQiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgXCI2MDIzZDM2NjI3MmJcIlxuaWYgKG1vZHVsZS5ob3QpIHsgbW9kdWxlLmhvdC5hY2NlcHQoKSB9XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(app-pages-browser)/./app/styles/uno.css\n"));
+
+/***/ }),
+
+/***/ "(app-pages-browser)/./node_modules/tailwindcss/tailwind.css":
+/*!***********************************************!*\
+  !*** ./node_modules/tailwindcss/tailwind.css ***!
+  \***********************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval(__webpack_require__.ts("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"45906b805dfa\");\nif (true) { module.hot.accept() }\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL25vZGVfbW9kdWxlcy90YWlsd2luZGNzcy90YWlsd2luZC5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBLCtEQUFlLGNBQWM7QUFDN0IsSUFBSSxJQUFVLElBQUksaUJBQWlCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vX05fRS8uL25vZGVfbW9kdWxlcy90YWlsd2luZGNzcy90YWlsd2luZC5jc3M/NjYyMiJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBcIjQ1OTA2YjgwNWRmYVwiXG5pZiAobW9kdWxlLmhvdCkgeyBtb2R1bGUuaG90LmFjY2VwdCgpIH1cbiJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(app-pages-browser)/./node_modules/tailwindcss/tailwind.css\n"));
+
+/***/ })
+
+});
