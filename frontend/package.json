@@ -27,7 +27,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm install",
     "start": "npm run dev",
     "test": "jest"
   },
