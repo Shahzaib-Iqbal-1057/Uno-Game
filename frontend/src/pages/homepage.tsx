@@ -102,7 +102,7 @@ function Home({ socket }: HomeProps) {
               <h2>Game Started!</h2>
               <p>Enjoy playing UNO, {playerName}!</p>
               <p>
-                Number of players joined: {currentPlayers}/{playerCount}
+                Number of players joined: {currentPlayers}/{playerCount}, Try joining with multiple tabs if you are just checking out the game
               </p>
             </motion.div>
           )}
