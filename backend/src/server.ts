@@ -11,7 +11,7 @@ import dotenv from "dotenv";
 dotenv.config({ path: __dirname + "/../.env" });
 
 const server = http.createServer(app);
-origin = process.env.ORIGIN || "http://localhost:5173";
+const origin = process.env.ORIGIN || "http://localhost:5173";
 const io = new Server(server, {
     cors: {
         origin: origin,
