@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": "*.tsx",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ],
+  "semi": true,
+  "singleQuote": true
+}
