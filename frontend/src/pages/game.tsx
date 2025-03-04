@@ -107,6 +107,11 @@ export default function GameTable({ socket }: GameTableProps) {
         setIsVictoryModalOpen(true);
     });
 
+    socket.on('gameOver', (data) => {
+      setVictoryMessage(data.message);
+      setIsVictoryModalOpen(true);
+    });
+
     return () => {
       socket.off('receiveMessage');
       socket.off('turnChange');
@@ -117,6 +122,7 @@ export default function GameTable({ socket }: GameTableProps) {
       socket.off('receiveMultipleCards');
       socket.off('winnerNotification');
       socket.off('gameOverNotification');
+      socket.off('gameOver');
     };
   }, [socket]);
 
