@@ -68,10 +68,15 @@ export default function GameTable({ socket }: GameTableProps) {
       setCenterCard(data.centerCard);
   });
 
-    socket.on('removePlayedCard', (data: { card: CardProps }) => {
-      setPlayerCards((prevCards) => {
-        const updatedCards = prevCards.filter((c) => c.name !== data.card.name);
-    
+  socket.on('removePlayedCard', (data: { card: CardProps }) => {
+    setPlayerCards((prevCards) => {
+      // Find the first occurrence index
+      const indexToRemove = prevCards.findIndex((c) => c.name === data.card.name);
+      
+      if (indexToRemove !== -1) {
+        const updatedCards = [...prevCards];
+        updatedCards.splice(indexToRemove, 1); 
+        
         if (updatedCards.length === 1 && !unoSentRef.current) {
           unoSentRef.current = true;
           socket.emit("unoSignal", { roomId });
@@ -79,14 +84,18 @@ export default function GameTable({ socket }: GameTableProps) {
           socket.emit("playerWon", { roomId });
           setVictoryMessage("You won!");
           setIsVictoryModalOpen(true);
-          unoSentRef.current = false; 
+          unoSentRef.current = false;
         } else if (updatedCards.length > 1) {
-          unoSentRef.current = false; 
+          unoSentRef.current = false;
         }
-    
-        return updatedCards;
-      });
+  
+        return updatedCards; 
+      }
+  
+      return prevCards; 
     });
+  });
+  
     
 
     socket.on('receiveCardFromDeck', (data: { card: CardProps }) => {
