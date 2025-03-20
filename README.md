@@ -42,7 +42,7 @@ Run Backend Dev server
 npm run dev
 ```
 
-### 2. Setup Frontend
+### 3. Setup Frontend
 Move to frontend directory and install all required dependencies.
 ```bash
 cd frontend
@@ -59,4 +59,4 @@ Run frontend server
 npm run dev
 ```
 
-This will start the game at localhost:5173, open is browser and check it out!
+This will start the game at localhost:5173, open in browser and check it out!
