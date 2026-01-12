@@ -216,24 +216,41 @@ const events = (io) => {
                 });
                 delete currentTurns[roomId];
             });
-            // Handle player disconnect
             socket.on("disconnect", async () => {
                 console.log(`Player ${name} disconnected`);
-                const currentRoom = await room_1.Room.findOne({
-                    "players.id": socket.id,
-                });
-                if (currentRoom) {
-                    // Notify everyone that the game is over
-                    io.to(currentRoom.roomId).emit("gameOver", {
-                        message: `The game has ended because a player left.`,
+                const currentRoom = await room_1.Room.findOne({ "players.id": socket.id });
+                if (!currentRoom)
+                    return;
+                const roomId = currentRoom.roomId;
+                const gameHasStarted = !!currentTurns[roomId]; // ✅ key idea
+                if (!gameHasStarted) {
+                    //remove player + decrement count, do NOT end room
+                    currentRoom.players.pull({ id: socket.id });
+                    currentRoom.playersJoined = Math.max(0, currentRoom.playersJoined - 1);
+                    await currentRoom.save();
+                    // If everybody left, delete room
+                    if (currentRoom.playersJoined === 0) {
+                        await room_1.Room.deleteOne({ roomId });
+                        console.log(`Room ${roomId} deleted (empty lobby).`);
+                        return;
+                    }
+                    // Notify remaining players in lobby
+                    io.to(roomId).emit("roomUpdate", {
+                        roomId,
+                        playersJoined: currentRoom.playersJoined,
+                        maxPlayers: currentRoom.maxPlayers,
+                        players: currentRoom.players,
                     });
-                    // Delete the room since the game cannot continue
-                    await room_1.Room.deleteOne({ roomId: currentRoom.roomId });
-                    delete currentTurns[currentRoom.roomId];
-                    // Remove all players from the room
-                    io.socketsLeave(currentRoom.roomId);
-                    console.log(`Room ${currentRoom.roomId} closed due to player exit.`);
+                    console.log(`Lobby update: ${roomId} (${currentRoom.playersJoined}/${currentRoom.maxPlayers})`);
+                    return;
                 }
+                io.to(roomId).emit("gameOver", {
+                    message: `The game has ended because a player left.`,
+                });
+                await room_1.Room.deleteOne({ roomId });
+                delete currentTurns[roomId];
+                io.socketsLeave(roomId);
+                console.log(`Room ${roomId} closed due to player exit (in-game).`);
             });
         });
     });

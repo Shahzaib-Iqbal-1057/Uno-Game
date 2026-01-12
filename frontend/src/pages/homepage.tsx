@@ -18,6 +18,7 @@ function Home({ socket }: HomeProps) {
   const [currentPlayers, setCurrentPlayers] = useState(1);
   const [, setCurrentTurn] = useState<string | null>(null);
   const navigate = useNavigate();
+  const remainingPlayers = Math.max(0, playerCount - currentPlayers);
 
   const handleStartGame = () => {
     if (playerName && playerCount >= 2) {
@@ -39,7 +40,7 @@ function Home({ socket }: HomeProps) {
     socket.on('gameStart', (data) => {
       setCurrentTurn(data.currentTurn);
 
-      // ✅ Redirect to game page and pass playerName, roomId, and currentTurn
+      // Redirect to game page and pass playerName, roomId, and currentTurn
       navigate('/game', {
         state: {
           playerName: playerName,
@@ -50,8 +51,8 @@ function Home({ socket }: HomeProps) {
     });
 
     // Listen for game over event
-    socket.on('gameOver', (data) => {
-      alert(data.message);
+    socket.on('gameOver', () => {
+      if (!gameStarted) return;
       setGameStarted(false);
       navigate('/'); // Redirect to homepage
     });
@@ -99,11 +100,14 @@ function Home({ socket }: HomeProps) {
               transition={{ duration: 0.5 }}
               className="game-started"
             >
-              <h2>Game Started!</h2>
+              <h2>Game Lobby Created!</h2>
               <p>Enjoy playing UNO, {playerName}!</p>
+              <p>{currentPlayers} / {playerCount} players joined</p>
               <p>
-                Number of players joined: {currentPlayers}/{playerCount}, Try joining with multiple tabs if you are just checking out the game
+                If you're just checking out the game : open {remainingPlayers} more{" "}
+                {remainingPlayers === 1 ? "tab" : "tabs"} and join game lobby.
               </p>
+              <p>Game starts automatically when everyone joins.</p>
             </motion.div>
           )}
         </AnimatePresence>

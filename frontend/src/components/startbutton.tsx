@@ -14,7 +14,7 @@ function StartButton({ onClick, disabled }: StartButtonProps) {
       disabled={disabled}
       className={`start-button ${disabled ? 'disabled' : ''}`}
     >
-      Start Game!
+      Create/Join Game Lobby
     </motion.button>
   );
 }
