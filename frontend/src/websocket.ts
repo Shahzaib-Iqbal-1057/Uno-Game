@@ -1,15 +1,19 @@
-import { io, Socket } from 'socket.io-client';
+import { io, Socket } from "socket.io-client";
 
-const SERVER_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
-const SOCKET_SERVER_URL = SERVER_URL;
+const SERVER_URL =
+  import.meta.env.VITE_BACKEND_URL?.trim() || "http://localhost:3001";
 
 let socket: Socket | null = null;
 
-const initializeSocket = (): Socket => {
+export const initializeSocket = (): Socket => {
   if (!socket) {
-    socket = io(SOCKET_SERVER_URL);
+    socket = io(SERVER_URL, {
+      transports: ["websocket"], // avoid polling issues in prod
+      withCredentials: true,
+    });
   }
   return socket;
 };
+
 
 export default initializeSocket;
