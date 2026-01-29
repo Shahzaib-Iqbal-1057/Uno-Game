@@ -3,6 +3,8 @@ import { io, Socket } from "socket.io-client";
 const SERVER_URL =
   import.meta.env.VITE_BACKEND_URL?.trim() || "http://localhost:3001";
 
+console.log("server url : ", SERVER_URL)
+
 let socket: Socket | null = null;
 
 export const initializeSocket = (): Socket => {
